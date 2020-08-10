@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bindingaccounts"
+            type="com.example.myapplication.viewmodel.BindingAccounts" />
+
+        <variable
+            name="spinadapteraccount"
+            type="com.example.myapplication.SpinnerAccountAdapter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+        <Spinner
+            android:id="@+id/spin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+
+            android:layout_centerInParent="true"
+
+            bind:selectedAccount="@={bindingaccounts.obvSelectedAccount_}"
+            app:adapter="@{spinadapteraccount}"></Spinner>
+
+        <EditText
+            android:id="@+id/edit"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spin"
+            android:layout_margin="30dp"
+            android:hint="Search Account"
+            android:text="@{bindingaccounts.obvSelectedAccount_}"
+            android:textSize="20dp"
+            android:onTextChanged="@{bindingaccounts::onEditTextChanged}" />
+
+    </RelativeLayout>
+
+</layout>
